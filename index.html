@@ -22,7 +22,7 @@
   $( "#input" ).change(function(e) {
     const value = e.target.value;
     const headers = [...value.matchAll(/-H\s*'.*'/g)];
-    
+
     const nextHeaders = headers.map((header) => {
       const headerStr = header[0];
       const headerRegexp = /-H\s*'(\S*):\s*(.*)'/;
@@ -33,14 +33,11 @@
 
     const rubyHashStr = `<div>
       <pre>{<br/>${nextHeaders.map(header => {
-          return `\t'${header.label}' => '${header.value}',<br/>`;
+          return `&nbsp;&nbsp;'${header.label}' => '${header.value}',<br/>`;
         }).join('')}}<br/>
       </pre>
     </div>`;
 
-    // console.info(rubyHashnextHeaders.map(header => {
-    //     return `<div>'${header.label}' => '${header.value}',</div>`;
-    //   }));
     $('#output').html(rubyHashStr);
   });
 </script>
