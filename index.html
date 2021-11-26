@@ -6,7 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<link rel="stylesheet" type="text/css" href="common.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <body>
-  this is my github.io
+  <h1>curl-headers-to-ruby-hash</h1>
+
+  <main>
+    <textarea id="input" rows="4" placeholder="Paste curl here"></textarea>
+
+    <div id="output"></div>
+  </main>
 </body>
+<script>
+  $( "#input" ).change(function(e) {
+    const value = e.target.value;
+    const headers = [...value.matchAll(/-H\s*'.*'/g)];
+    
+    const nextHeaders = headers.map((header) => {
+      const headerStr = header[0];
+      const headerRegexp = /-H\s*'(\S*):\s*(.*)'/;
+      headerRegexp.test(headerStr)
+      RegExp.$1, RegExp.$2
+      return { label: RegExp.$1, value: RegExp.$2 };
+    });
+
+    const rubyHashStr = `<div>
+      <pre>
+        <div>{</div>
+        ${nextHeaders.map(header => {
+          return `\t<div>'${header.label}' => '${header.value}',</div>`;
+        }).join('')}
+        <div>}</div>
+      </pre>
+    </div>`;
+
+    // console.info(rubyHashnextHeaders.map(header => {
+    //     return `<div>'${header.label}' => '${header.value}',</div>`;
+    //   }));
+    $('#output').html(rubyHashStr);
+  });
+</script>
 </html>

@@ -1,0 +1,38 @@
+header,
+main,
+footer {
+	width: 85%;
+	max-width: 900px;
+	margin: 50px auto;
+}
+
+h1 {
+	font-size: 48px;
+	font-weight: bold;
+	line-height: 1.5em;
+	text-align: center;
+}
+
+#input,
+#output {
+	border: 1px solid #CCC;
+	padding: 10px;
+	outline: none;
+	font: 16px/1.5em Consolas, Menlo, Monaco, 'Courier New', monospace;
+	white-space: pre;
+	tab-size: 4;
+}
+
+#input {
+	width: 100%;
+	margin-bottom: 50px;
+	overflow-y: auto;
+	resize: vertical;
+}
+
+#output {
+	background-color: #F0F8FF; /* "aliceblue" - happened on that by chance choosing a color in chrome inspector tools */
+	word-wrap: break-word;
+	font-size: 14px;
+	overflow-x: auto;
+}
