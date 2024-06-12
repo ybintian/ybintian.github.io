@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Musical Notes</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        #note {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        input[type="number"] {
+            margin: 5px;
+            padding: 5px;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="note">Click the button to show a note</div>
+
+<div class="controls">
+    <button id="randomButton">Show Random Note</button>
+    <button id="autoButton">Start Auto Mode</button>
+    <label for="interval">Interval (seconds):</label>
+    <input type="number" id="interval" value="3" min="1">
+</div>
+
+<script>
+    const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    let autoMode = false;
+    let intervalId;
+
+    function showRandomNote() {
+        const randomIndex = Math.floor(Math.random() * notes.length);
+        document.getElementById('note').textContent = notes[randomIndex];
+    }
+
+    document.getElementById('randomButton').addEventListener('click', showRandomNote);
+
+    document.getElementById('autoButton').addEventListener('click', () => {
+        autoMode = !autoMode;
+        const interval = parseInt(document.getElementById('interval').value) * 1000;
+
+        if (autoMode) {
+            document.getElementById('autoButton').textContent = 'Stop Auto Mode';
+            intervalId = setInterval(showRandomNote, interval);
+        } else {
+            document.getElementById('autoButton').textContent = 'Start Auto Mode';
+            clearInterval(intervalId);
+        }
+    });
+</script>
+
+</body>
+</html>
