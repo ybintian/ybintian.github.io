@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭点菜系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .menu-section {
+            margin-bottom: 20px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .menu-item label {
+            flex-grow: 1;
+        }
+        .summary {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>家庭点菜系统</h1>
+
+    <!-- 荤菜 -->
+    <div class="menu-section">
+        <h2>荤菜</h2>
+        <div class="menu-item">
+            <label for="meat1">红烧肉 - 价格: ¥35 - 准备时间: 10分钟 - 烹饪时间: 45分钟</label>
+            <input type="checkbox" id="meat1" data-price="35" data-prep-time="10" data-cook-time="45">
+        </div>
+        <div class="menu-item">
+            <label for="meat2">宫保鸡丁 - 价格: ¥25 - 准备时间: 8分钟 - 烹饪时间: 30分钟</label>
+            <input type="checkbox" id="meat2" data-price="25" data-prep-time="8" data-cook-time="30">
+        </div>
+    </div>
+
+    <!-- 素菜 -->
+    <div class="menu-section">
+        <h2>素菜</h2>
+        <div class="menu-item">
+            <label for="veg1">炒青菜 - 价格: ¥10 - 准备时间: 5分钟 - 烹饪时间: 10分钟</label>
+            <input type="checkbox" id="veg1" data-price="10" data-prep-time="5" data-cook-time="10">
+        </div>
+        <div class="menu-item">
+            <label for="veg2">凉拌黄瓜 - 价格: ¥8 - 准备时间: 3分钟 - 烹饪时间: 5分钟</label>
+            <input type="checkbox" id="veg2" data-price="8" data-prep-time="3" data-cook-time="5">
+        </div>
+    </div>
+
+    <!-- 荤素菜 -->
+    <div class="menu-section">
+        <h2>荤素菜</h2>
+        <div class="menu-item">
+            <label for="mix1">鱼香茄子 - 价格: ¥28 - 准备时间: 15分钟 - 烹饪时间: 25分钟</label>
+            <input type="checkbox" id="mix1" data-price="28" data-prep-time="15" data-cook-time="25">
+        </div>
+        <div class="menu-item">
+            <label for="mix2">回锅肉 - 价格: ¥30 - 准备时间: 12分钟 - 烹饪时间: 35分钟</label>
+            <input type="checkbox" id="mix2" data-price="30" data-prep-time="12" data-cook-time="35">
+        </div>
+    </div>
+
+    <!-- 汤 -->
+    <div class="menu-section">
+        <h2>汤</h2>
+        <div class="menu-item">
+            <label for="soup1">西红柿蛋汤 - 价格: ¥15 - 准备时间: 5分钟 - 烹饪时间: 20分钟</label>
+            <input type="checkbox" id="soup1" data-price="15" data-prep-time="5" data-cook-time="20">
+        </div>
+        <div class="menu-item">
+            <label for="soup2">冬瓜排骨汤 - 价格: ¥40 - 准备时间: 10分钟 - 烹饪时间: 60分钟</label>
+            <input type="checkbox" id="soup2" data-price="40" data-prep-time="10" data-cook-time="60">
+        </div>
+    </div>
+
+    <button onclick="calculateOrder()">计算总价和时间</button>
+
+    <div class="summary">
+        <h2>订单总结</h2>
+        <p id="total-prep-time">准备时间: 0 分钟</p>
+        <p id="total-cook-time">烹饪时间: 0 分钟</p>
+        <p id="total-price">总价格: ¥0</p>
+    </div>
+
+    <script src="order.js"></script>
+</body>
+</html>
